@@ -56,16 +56,16 @@ def zadacha2():
 
 # Задача 3. В двумерном массиве хранятся средние дневные температуры с мая по сентябрь за прошлый год. Каждому месяцу соответствует своя строка.
 # Определите самый жаркий и самый холодный 7-дневный промежуток каждого месяца. Выведите их даты.
-def period_for_mounth(temperature_in_mounth, mounth):
+def period_for_mounth(temperature_in_mounth, period, mounth):
     max_temp = 0
     day_max_temp = 1
     min_temp = 1000
     day_min_temp = 1
-    period = 7
+ 
     for day in range(len(temperature_in_mounth) - period + 1):
         temp_in_period = temperature_in_mounth[day:day + period]
         sum_temp_in_period = sum(temp_in_period)
-        # print(f'{day + 1} - {day + period} {temp_in_period}')
+        print(f'{day + 1} - {day + period} {temp_in_period}')
         if sum_temp_in_period >  max_temp:
             max_temp = sum_temp_in_period
             day_max_temp = day
@@ -82,16 +82,35 @@ def zadazha3():
     temp_in_july =[random.randint(19,32) for _ in range(31)]
     temp_in_august =[random.randint(20,28) for _ in range(30)]
     temp_in_september =[random.randint(15,24) for _ in range(31)]
-    print(f'все температуры {temp_in_may}')
-    period_for_mounth(temp_in_may, 'мая')
-    print(f'все температуры {temp_in_june}')
-    period_for_mounth(temp_in_june, 'июня')
-    print(f'все температуры {temp_in_july}')
-    period_for_mounth(temp_in_july, 'июля')
-    print(f'все температуры {temp_in_august}')
-    period_for_mounth(temp_in_august, 'августа')
-    print(f'все температуры {temp_in_september}')
-    period_for_mounth(temp_in_september, 'сентября')
+    period = 7
+    all_mounth = 5
+    new_array = [0] * all_mounth
+
+    for i in range(all_mounth):
+        if i == 0:
+            new_array[i] = temp_in_may
+        elif i ==1:
+             new_array[i] =temp_in_june
+        elif i == 2:
+             new_array[i] =temp_in_july    
+        elif i == 3:
+            new_array[i] =temp_in_august
+        else:
+             new_array[i] =temp_in_september 
+
+    for row in new_array:
+        print(row) 
+
+    # print(f'все температуры {temp_in_may}')
+    period_for_mounth(temp_in_may,period, 'мая')
+    # print(f'все температуры {temp_in_june}')
+    period_for_mounth(temp_in_june,period, 'июня')
+    # print(f'все температуры {temp_in_july}')
+    period_for_mounth(temp_in_july, period, 'июля')
+    # print(f'все температуры {temp_in_august}')
+    period_for_mounth(temp_in_august, period, 'августа')
+    # print(f'все температуры {temp_in_september}')
+    period_for_mounth(temp_in_september, period, 'сентября')
    
 
 zadazha3()
